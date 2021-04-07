@@ -63,7 +63,7 @@ class ViewController: UIViewController {
 
     // MARK: - IBActions
 
-    @IBAction func getWeatherForecastButtonPressed(_ sender: Any) {
+    @IBAction private func getWeatherForecastButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Select count of days", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "3 days", style: .default, handler: { (_) in
             self.countOfDays = 3
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
 
     // MARK: - Flow functions
 
-    func getForecast() {
+   private func getForecast() {
         if cityPickerView.selectedRow(inComponent: 0) != 0 {
             selectedCity = cities[cityPickerView.selectedRow(inComponent: 0)]
             apiURL = startUrl + selectedCity + apiKey + "&days=\(countOfDays)"
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
         sendRequest()
     }
 
-    func sendRequest() {
+   private func sendRequest() {
         viewModel.forecastDaily.bind { (forecast) in
             DispatchQueue.main.async {
                 if forecast != nil {
@@ -112,6 +112,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Extentions
 // MARK: - Extension UIPickerView
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -178,7 +179,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nameController = String(describing: DailyForestViewController.self)
-        let viewController = storyboard.instantiateViewController(identifier: nameController) as DailyForestViewController
+    let viewController = storyboard.instantiateViewController(identifier: nameController) as DailyForestViewController
         viewController.modalPresentationStyle = .fullScreen
         viewController.forecast = viewModel.forecastDaily.value
         viewController.index = indexPath.row

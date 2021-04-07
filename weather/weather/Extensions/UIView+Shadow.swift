@@ -1,10 +1,3 @@
-//
-//  UIView+Shadow.swift
-//  weather
-//
-//  Created by Ekaterina Abramova on 12.12.2020.
-//
-
 import UIKit
 
 extension UIView {

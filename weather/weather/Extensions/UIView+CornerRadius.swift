@@ -1,10 +1,3 @@
-//
-//  UIView+CornerRadius.swift
-//  weather
-//
-//  Created by Ekaterina Abramova on 18.02.2021.
-//
-
 import Foundation
 import UIKit
 

@@ -1,4 +1,3 @@
-
 import UIKit
 
 class DailyForestViewController: UIViewController {
@@ -46,11 +45,11 @@ class DailyForestViewController: UIViewController {
 
     // MARK: - IBActions
 
-    @IBAction func backButtonPressed(_ sender: Any) {
+    @IBAction private func backButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func showPreviousForecastButtonPressed(_ sender: Any) {
+    @IBAction private func showPreviousForecastButtonPressed(_ sender: Any) {
         index -= 1
         if index == 0 {
             nextForecastButton.alpha = activeButtonAlpha
@@ -65,7 +64,7 @@ class DailyForestViewController: UIViewController {
         showForecast(for: index)
     }
 
-    @IBAction func showNextForecastButtonPressed(_ sender: Any) {
+    @IBAction private func showNextForecastButtonPressed(_ sender: Any) {
         index += 1
         if index == totalDays - 1 {
             nextForecastButton.alpha = inactiveButtonAlpha
@@ -82,7 +81,7 @@ class DailyForestViewController: UIViewController {
 
     // MARK: - Flow functions
 
-    func showForecast(for index: Int) {
+   private func showForecast(for index: Int) {
         if (index != -1) && (index < totalDays) {
             let dateFormetter = DateFormatter()
             dateFormetter.dateFormat = "yyyy-MM-dd"
@@ -133,13 +132,13 @@ class DailyForestViewController: UIViewController {
         }
     }
 
-    func showErrorAlert() {
+    private func showErrorAlert() {
         let errorAlert = UIAlertController(title: "Attention", message: "Count of days is over", preferredStyle: .alert)
         errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel))
         present(errorAlert, animated: true)
     }
 
-    @objc func swipeToBack(_ gestureRecognizer: UISwipeGestureRecognizer) {
+    @objc private func swipeToBack(_ gestureRecognizer: UISwipeGestureRecognizer) {
         navigationController?.popViewController(animated: true)
     }
 }
