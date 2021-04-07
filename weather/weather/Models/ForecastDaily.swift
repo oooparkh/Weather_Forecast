@@ -1,4 +1,3 @@
-
 import Foundation
 
 class ForecastDaily: Codable {

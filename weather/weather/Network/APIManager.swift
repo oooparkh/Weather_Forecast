@@ -1,15 +1,14 @@
-
 import Foundation
 
 class APIManager {
 
-    func fetchForecast(url urlString: String, completion: @escaping (Result<ForecastDaily?, Error>) -> ()) {
+    func fetchForecast(url urlString: String, completion: @escaping (Result<ForecastDaily?, Error>) -> Void) {
         if let url = URL(string: urlString) {
             fetchData(url: url, completion: completion)
         }
     }
 
-    func fetchData<T: Codable>(url: URL, completion: @escaping (Result<T?, Error>) -> ()) {
+    func fetchData<T: Codable>(url: URL, completion: @escaping (Result<T?, Error>) -> Void) {
         let urlRequest = URLRequest(url: url)
         URLSession.shared.configuration.urlCache = nil
         let config = URLSessionConfiguration.default

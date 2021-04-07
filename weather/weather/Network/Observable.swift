@@ -1,4 +1,3 @@
-
 import Foundation
 
 class Observable<T> {
@@ -9,13 +8,13 @@ class Observable<T> {
         }
     }
 
-    private var listener: ((T) -> ())?
+    private var listener: ((T) -> Void)?
 
     init(_ value: T) {
         self.value = value
     }
 
-    func bind(_ handler: @escaping ((T) -> ())) {
+    func bind(_ handler: @escaping ((T) -> Void)) {
         listener = handler
     }
 }
